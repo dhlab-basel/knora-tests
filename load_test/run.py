@@ -330,7 +330,7 @@ def create_letters():
                 proxies={'http': 'http://localhost:3333'})
 
             print(attributes['title'])
-            print(textGetRequest.json()['value']['xml'])
+            # print(textGetRequest.json()['value']['xml'])
             print("+++++++++++")
 
 
