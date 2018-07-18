@@ -69,7 +69,7 @@ def create_mapping():
         traceback.print_exc()
 
 
-def create_letters():
+def create_letters(facsimile=False, limit=2000):
     try:
         beolProjectIri = "http://rdfh.ch/projects/yTerZGyxjZVqFMNNKXCDPF"
         base_url = "http://localhost/v1/"
@@ -78,14 +78,17 @@ def create_letters():
 
         mappingIri = beolProjectIri + "/mappings/BEBBLetterMapping"
 
-        pathToXML = "xml/1704-01-26_Bernoulli_Johann_I-Hermann_Jacob.xml"
+        if facsimile == True:
+            pathToXML = "xml/letter_with_facsimile.xml"
+        else:
+            pathToXML = "xml/letter_without_facsimile.xml"
 
         letterResources = {}
 
         print("Creating letters (without text)")
 
         # number of runs for the same file
-        limit = 2000
+        # limit = 2000
 
         for i in range(0, limit):
 
@@ -311,7 +314,7 @@ def create_letters():
                 }
             }
 
-            print(textParams)
+            # print(textParams)
 
             textCreationRequest = requests.post(base_url + "values",
                                                 data=json.dumps(textParams),
@@ -333,7 +336,6 @@ def create_letters():
             # print(textGetRequest.json()['value']['xml'])
             print("+++++++++++")
 
-
     except requests.exceptions.HTTPError as e:
         sys.stderr.write("http request failed: \n")
         if "attributes" in locals():
@@ -349,4 +351,5 @@ def create_letters():
 
 if __name__ == '__main__':
     create_mapping()
-    create_letters()
+    create_letters(False, 2000)
+    create_letters(True, 2000)
