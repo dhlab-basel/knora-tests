@@ -1,1 +1,5 @@
 *.gor
+.idea
+.vscode
+target/
+/perf-tests/logs
