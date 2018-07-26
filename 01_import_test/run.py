@@ -351,5 +351,5 @@ def create_letters(facsimile=False, limit=2000):
 
 if __name__ == '__main__':
     create_mapping()
-    create_letters(False, 20000)
-    # create_letters(True, 2000)
+    # create_letters(False, 20000)
+    create_letters(True, 2000)
