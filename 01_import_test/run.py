@@ -3,6 +3,7 @@
 import requests, json, urllib, sys, os, re
 import xml.etree.ElementTree as ET
 import traceback
+import datetime
 
 def get_date_from_title(titlestr):
     # year or month precision
@@ -143,6 +144,7 @@ def create_letters(facsimile=False, limit=2000):
 
         for i in range(0, limit):
 
+            print(datetime.datetime.now())
             print(i)
 
             etree = ET.parse(pathToXML)
