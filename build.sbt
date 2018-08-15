@@ -46,12 +46,12 @@ lazy val commonSettings = Seq(
   }
 )
 
-lazy val perfTests = (project in file("perf-tests"))
+lazy val perftests = (project in file("perftests"))
   .enablePlugins(GatlingPlugin)
   .settings(
     scalaVersion := "2.12.6",
     libraryDependencies ++= Seq(
-      "org.scalatest" %% "scalatest" % "3.0.0" % "test,it",
+      "org.scalatest" %% "scalatest" % "3.0.4" % "test,it",
       "io.gatling.highcharts" % "gatling-charts-highcharts" % "2.3.1" % "test,it",
       "io.gatling" % "gatling-test-framework" % "2.3.1" % "test,it"
     )
