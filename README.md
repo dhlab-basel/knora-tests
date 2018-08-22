@@ -3,8 +3,26 @@ Different tests which can be run against a running Knora stack
 
 ## Prerequisits
 
-To replay the HTTP request we use [Goreplay](https://goreplay.org). Please follow
-their installation instructions.
+To be able to run `ab` (apache bench) with a high number of concurrent users, we need to possibly
+raise some system limits.
+
+On the Mac:
+
+```
+$ sysctl kern.maxfiles
+kern.maxfiles: 98304
+$ sysctl kern.maxfilesperproc
+kern.maxfilesperproc: 49152
+$ sudo sysctl -w kern.maxfiles=1048600
+kern.maxfiles: 12288 -> 1048600
+$ sudo sysctl -w kern.maxfilesperproc=1048576
+kern.maxfilesperproc: 10240 -> 1048576
+$ ulimit -S -n
+7168
+$ ulimit -S -n 1048576
+$ ulimit -S -n
+1048576
+```
 
 
 ## import-test
